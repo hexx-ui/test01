@@ -31,8 +31,9 @@ import static com.xxl.job.core.biz.model.ReturnT.*;
 @Component
 public class checkIdXxljob {
     private static Logger logger = LoggerFactory.getLogger(SampleXxlJob.class);
-    public static final String CHECK_ID_XML_PATH = "D:\\Users\\mywork\\hxxgithub\\test01\\test002\\xxl-job\\xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\src\\main\\java\\com\\xxl\\job\\executor\\service\\jobhandler\\checkXml\\checkId.xml";
-    public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "D:\\Users\\mywork\\hxxgithub\\test01\\test002\\xxl-job\\xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\src\\main\\java\\com\\xxl\\job\\executor\\service\\jobhandler\\checkXml\\patAssociated.xml";
+    public static final String CHECK_ID_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\checkId.xml";
+    public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
+    public static final String CHECK_ID = " 错误的数据表： ";
 
 
     @Autowired
@@ -44,6 +45,7 @@ public class checkIdXxljob {
     public ReturnT<String> demoJobHandler(String param) throws Exception {
         int errCount = 0;
         String errTable ="";
+
         // 获取需要校验的SQL集合
         List<String> sqlList = getSqlList(CHECK_ID_XML_PATH);
         // 执行SQL 判断结果是否符合预期
@@ -61,7 +63,7 @@ public class checkIdXxljob {
         }
 
         if(errCount>0){
-            return new ReturnT(FAIL_CODE, errTable, CHECK_ID);
+            return new ReturnT(FAIL_CODE, CHECK_ID +errTable);
         }
 
         return SUCCESS;
@@ -89,7 +91,7 @@ public class checkIdXxljob {
         }
 
         if(errCount>0){
-            return new ReturnT(FAIL_CODE, errTable, CHECK_ID);
+            return new ReturnT(FAIL_CODE, CHECK_ID +errTable);
         }
 
         return SUCCESS;

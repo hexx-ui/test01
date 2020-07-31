@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-import static com.xxl.job.core.biz.model.ReturnT.CHECK_ID;
 import static com.xxl.job.core.biz.model.ReturnT.FAIL_CODE;
 
 /**
@@ -41,22 +40,22 @@ public class SampleXxlJob {
     @Autowired
     PrimarykeyMapper primarykeyMapper;
 
-
-    /**
-     * 1、简单任务示例（Bean模式）
-     */
-    @XxlJob("demoJobHandler")
-    public ReturnT<String> demoJobHandler(String param) throws Exception {
-
-        ReturnT returnT = new ReturnT();
-//        checkVo vo = primarykeyMapper.primarST_SJL_JLHZ();
-//        if(vo.getCountNumber() > 1){
-//            returnT.setMsg("失败");
-//            returnT.setCode(FAIL_CODE);
-//            return returnT;
-//        }
-        return new ReturnT(FAIL_CODE,"ST_SJL_JLHZ",CHECK_ID);
-    }
+//
+//    /**
+//     * 1、简单任务示例（Bean模式）
+//     */
+//    @XxlJob("demoJobHandler")
+//    public ReturnT<String> demoJobHandler(String param) throws Exception {
+//
+//        ReturnT returnT = new ReturnT();
+////        checkVo vo = primarykeyMapper.primarST_SJL_JLHZ();
+////        if(vo.getCountNumber() > 1){
+////            returnT.setMsg("失败");
+////            returnT.setCode(FAIL_CODE);
+////            return returnT;
+////        }
+//        return new ReturnT(FAIL_CODE,"ST_SJL_JLHZ",CHECK_ID);
+//    }
 
 
     /**
