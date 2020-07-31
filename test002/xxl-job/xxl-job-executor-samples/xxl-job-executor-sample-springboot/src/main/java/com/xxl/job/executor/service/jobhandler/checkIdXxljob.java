@@ -5,6 +5,7 @@ import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.job.executor.dao.PrimarykeyMapper;
 import com.xxl.job.executor.vo.checkVo;
+import org.apache.commons.lang.StringUtils;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -77,7 +78,7 @@ public class checkIdXxljob {
         for (String sql : sqlList) {
             List<checkVo> voList = primarykeyMapper.checkId(sql);
             for (checkVo vo :voList) {
-                if (vo.getCountNumber() > 1) {
+                if (StringUtils.isEmpty(vo.getOrgPatientSn()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
                     errCount ++;
                     String[] arr = sql.split("from");
                     String[] arr1 = arr[1].split("group");
