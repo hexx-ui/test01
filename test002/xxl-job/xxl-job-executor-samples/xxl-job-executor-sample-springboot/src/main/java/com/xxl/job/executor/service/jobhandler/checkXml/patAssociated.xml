@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sqls>
+--门诊挂号表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OUTPATIENT_REGIST   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REGIST_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--门诊就诊记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OUTPATIENT_VISIT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.VISIT_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--门诊诊疗处方 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OUTPATIENT_PRESC   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.PRESCRIPTION_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--门诊发药表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OUTPATIENT_MEDI_SCHED   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DISPENSING_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--退药表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_WITHDRAWAL   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DRUG_REPER_REQUEST_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--诊断表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_DIAGNOSIS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DIAGNOSIS_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--处方与诊断表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_PRESC_DIAGNOSIS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DIAGNOSIS_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--入院登记信息 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_REGIST_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.INHOSPITAL_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--住院就诊记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_VISIT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.INHOSPITAL_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--住院医嘱明细表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_ORDER_DETAIL   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.ORDER_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--住院发药记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_MEDI_SCHED   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DISPENSING_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--住院发药明细表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_MEDI_SCHED_DETAIL   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DISPENSING_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--门诊收费汇总表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OUTPATIENT_FEE_SUMM   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.CHARGE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--门诊收费明细表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OUTPATIENT_FEE_DETAIL   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.CHARGE_RETURN_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--住院收费汇总表（已结算） 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_FEE_SUMM   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.CHARGE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--住院收费明细表（已结算） 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_INPATIENT_FEE_DETAIL   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.CHARGE_RETURN_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--检验记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_LAB_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.APPLY_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--细菌结果表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_BACTERIAL_RESULT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REPORT_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--过敏信息表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_ALLERGY_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--药敏结果表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_DRUG_SENSIT_RESULTS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REPORT_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--检验结果指标表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_LAB_RESULT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REPORT_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--检查预约表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_EXAM_APPO_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.APPOINTEXAM_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--检查记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_EXAM_RECORD_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RIS_CHECK_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--手术申请单 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OPERATION_REQUEST   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.APPLY_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--手术安排 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OPERATION_RANG   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.OPER_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--麻醉安排 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_ANESTHESIA_RANG   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.OPER_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--手术用药 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_OPERATION_MEDICAL   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.MEDICAL_BEGIN_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--输血申请 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_BLOOD_TRANS_REQUEST   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.APPLY_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--配血记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_BLOOD_MATCH_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.PREPARE_BLOOD_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--输血记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  EN_BLOOD_RECORD_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.APPLY_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--病历文书汇总 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_MEDICAL_RECORD_SUMM   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DOCUMENT_TATLE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--西医住院病案首页 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_WEST_INPATIENT_HOMEPAGE   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DISCHARGE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--中医住院病案首页 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_CH_INPATIENT_HOMEPAGE   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DISCHARGE_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--门（急）诊病历 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_INPATIENT_MEDICAL_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--急诊留观病历 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_EMERG_STAY_MED_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--卫生事件摘要 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_HEALTH_EVENTS_SUMM   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.VISIT_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--基本健康信息 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_BASE_HEALTH_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--入院记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_INPATIETN_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--24小时入出院死亡记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_24H_INPATIENT_INFO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--首次病程记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_FIRST_COURSE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--日常病程记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_DAILY_COURSE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--上级医师查房记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_SUP_PHYS_WA_ROU_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--疑难病例讨论 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_DIFFICULT_CASE_DISCUSS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--交接班记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_SHIFT_HANDOVER_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--转科记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_TRANSFER_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--阶段小结 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_STAGES_SUMMARY   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--会诊记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_CONSULTATION_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--术前小结 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_PREOPERATIVE_SUMMARY   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--术前讨论 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_PREOPERATIVE_DISCUSS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--手术记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_OPERATIVE_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--术后首次病程记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_FIRST_POS_COURSE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--出院记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_DISCHARGE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--死亡记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_DEATH_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--死亡病例讨论记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_DEATH_CASE_DISC_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--手术同意 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_OPERATION_CONSENT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--麻醉知情通知 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_ANESTHESIA_INFO_NOTICE   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--输血治疗同意书 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_BLOOD_TRAN_TRE_CONS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--特殊检查及特殊治疗同意书 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_SP_EXA_SPE_TRE_CONS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--病危（重通知书） 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_CRITICAL_ILLNESS_NOTICE   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--其他知情同意书 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_OTHER_INFORMED_CONS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--待产记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_WAIT_CHILDBIRTH_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--阴道分娩记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_VAGINAL_DELIVERY_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--剖宫产手术记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_CESAREAN_SECTION_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--治疗处置记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_TREATMENT_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--麻醉术前访视记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_ANES_PREOP_VISIT_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--麻醉记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_ANESTHESIA_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--麻醉术后访视记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_POST_ANES_VISIT_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--抢救记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_RESCUE_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--上报卡 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_REPORT_CARD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REPORT_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--感染上报 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MR_INFECTION_REPORT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REPORT_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--一般护理记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_GENERAL_CARE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--手术护理功能 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_OPER_NURSE_FUNC   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--生命体征测量记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_VITAL_SIGN_MEAS_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--出入量记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_IN_OUT_MEASURE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.RECORD_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--高值耗材使用记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_HIGH_VAL_CON_USE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.USE_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--耗材入库表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  BD_CON_WAREHOUSE   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DBILL_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--耗材出库表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  BD_CON_WAREHOUS_OUT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DBILL_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--病危（重）护理记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_CRITICAL_CARE_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--特级护理记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_SUPER_CARE_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--入院评估记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_ADMISSION_ASSE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--护理计划记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_NURSE_PLAN_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--出院评估与指导记录 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_DISC_ASSE_GUID_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.SIGN_DATETIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--临床路径 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_ACCESS_CLINICAL_PATH   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.CP_IN_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--变异原因记录表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_NOT_INC_WIT_VAR_REA_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.CONFIRM_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--临床路径诊断 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  MP_CLINICAL_PATH_DIAGNOSIS   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.DIAGNOSIS_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--就诊记录表（体检） 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  PH_VISIT_RECORD_TJ   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.TEST_DATE_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--体检总检表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  PH_GENERAL_PHYSICAL_EXAM   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.ALL_CHECK_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--体格及功能检查报告表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  PH_PHYSICAL_FUNC_EXAM   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.REPORT_DATE  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+--体格及功能检查明细表 
+<sql> select top 5 a.id, a.ORG_PATIENT_SN, b.ORG_PATIENT_SN ORG_PATIENT_SN_B  from  PH_PHYSICAL_FUNC_EXAM_LIST   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN ORG_PATIENT_SN_B  where a.EXAM_TIME  >='2017-01-01'  order by ORG_PATIENT_SN _B</sql>
+</sqls>
