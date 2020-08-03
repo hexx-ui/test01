@@ -2,11 +2,10 @@ package com.xxl.job.executor.service.jobhandler;
 
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.annotation.XxlJob;
-import com.xxl.job.core.log.XxlJobLogger;
-import com.xxl.job.executor.dao.PrimarykeyMapper;
+import com.xxl.job.executor.dao.db70.Primary70Mapper;
+import com.xxl.job.executor.dao.db74.Primary74Mapper;
 import com.xxl.job.executor.vo.checkVo;
 import org.apache.commons.lang.StringUtils;
-import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static com.xxl.job.core.biz.model.ReturnT.*;
@@ -34,15 +32,21 @@ public class checkIdXxljob {
     // 服务器
        public static final String CHECK_ID_XML_PATH = "/var/local/job/checkXml/checkId.xml";
        public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "/var/local/job/checkXml/patAssociated.xml";
+       public static final String TABLE_COUNT_CHECK_XML_PATH = "/var/local/job/checkXml/tableCountcheck.xml";
 
     // wen10
     // public static final String CHECK_ID_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\checkId.xml";
     // public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
+    // public static final String TABLE_COUNT_CHECK_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\tableCountcheck.xml";
+
     public static final String CHECK_ID = " 错误的数据表： ";
 
 
     @Autowired
-    PrimarykeyMapper primarykeyMapper;
+    Primary70Mapper primary70Mapper;
+    @Autowired
+    Primary74Mapper primary74Mapper;
+
     ReturnT returnT = new ReturnT();
 
     // 校验数据ID一致性
@@ -56,7 +60,7 @@ public class checkIdXxljob {
         System.out.println("______________________ID一致性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
-            List<checkVo> voList = primarykeyMapper.checkId(sql);
+            List<checkVo> voList = primary70Mapper.checkId(sql);
             for (checkVo vo : voList) {
                 if (vo.getCountNumber() > 1) {
                     errCount++;
@@ -95,7 +99,7 @@ public class checkIdXxljob {
         System.out.println("______________________患者关联性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
-            List<checkVo> voList = primarykeyMapper.checkId(sql);
+            List<checkVo> voList = primary70Mapper.checkId(sql);
             for (checkVo vo :voList) {
                 if (vo == null || StringUtils.isEmpty(vo.getOrgPatientSn()) || StringUtils.isEmpty(vo.getOrgPatientSnB()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
                     errCount ++;
@@ -117,6 +121,48 @@ public class checkIdXxljob {
             return returnT;
         }
     }
+
+    // 校验表数据总量一致性
+    @XxlJob("tableCountcheck")
+    public ReturnT<String> tableCountcheck(String param) throws Exception {
+        int errCount = 0;
+        String errTable ="";
+
+        // 获取需要校验的SQL集合
+        List<String> sqlList = getSqlList(TABLE_COUNT_CHECK_XML_PATH);
+        System.out.println("______________________表数据总量一致性执行SQL数"+ sqlList.size() );
+        // 执行SQL 判断结果是否符合预期
+        for (String sql : sqlList) {
+            List<checkVo> voList70 = primary70Mapper.checkId(sql);
+            List<checkVo> voList74 = primary74Mapper.checkId(sql);
+            for (int i = 0; i < voList70.size(); i++) {
+                if (voList70.get(i) != null && voList74.get(i) != null && voList70.get(i).getCountNumber() != voList74.get(i).getCountNumber()) {
+                    errCount++;
+                    String[] arr = sql.split("from");
+                    String[] arr1 ;
+                    if (arr[1].contains("where")) {
+                        arr1 = arr[1].split("where");
+                        errTable += arr1[0] + ",     ";
+                    } else {
+                        errTable += arr[1] + ",     ";
+                    }
+                    break;
+                }
+            }
+        }
+
+        if(errCount>0){
+            returnT.setCode(FAIL_CODE);
+            returnT.setMsg(CHECK_ID +errTable);
+            return returnT;
+        }else {
+            returnT.setCode(SUCCESS_CODE);
+            returnT.setMsg("表数据总量一致性校验通过!");
+            return returnT;
+        }
+    }
+
+
     // 解析 xml 获取sql队列
     public List<String> getSqlList(String xmlPath) {
         List<String> sqlList = new ArrayList<>();

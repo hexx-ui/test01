@@ -5,8 +5,7 @@ import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.job.core.util.ShardingUtil;
-import com.xxl.job.executor.dao.PrimarykeyMapper;
-import com.xxl.job.executor.vo.checkVo;
+import com.xxl.job.executor.dao.db70.Primary70Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
-
-import static com.xxl.job.core.biz.model.ReturnT.FAIL_CODE;
 
 /**
  * XxlJob开发示例（Bean模式）
@@ -37,8 +33,8 @@ import static com.xxl.job.core.biz.model.ReturnT.FAIL_CODE;
 public class SampleXxlJob {
     private static Logger logger = LoggerFactory.getLogger(SampleXxlJob.class);
 
-    @Autowired
-    PrimarykeyMapper primarykeyMapper;
+//    @Autowired
+//    Primary70Mapper primarykeyMapper;
 
 //
 //    /**
