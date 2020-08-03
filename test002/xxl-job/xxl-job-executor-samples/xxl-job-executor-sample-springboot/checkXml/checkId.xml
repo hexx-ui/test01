@@ -8,246 +8,246 @@
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEPT_CODE  from BD_DEPT_INFO   group by  HQ_ORG_CODE,DEPT_CODE order by  countNumber desc </sql>
 --收费项目目录  
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,PROJECT_CODE  from BD_CHARGE_ITEM_INFO   group by  HQ_ORG_CODE,PROJECT_CODE order by  countNumber desc </sql>
---临床项目目录  
+--临床项目目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ORDER_PROJ_CODE  from BD_CLINICAL_ITEM_INFO   group by  HQ_ORG_CODE,ORDER_PROJ_CODE order by  countNumber desc </sql>
---材料目录  
+--材料目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,MATERIAL_CODE  from BD_MATERIAL_INFO   group by  HQ_ORG_CODE,MATERIAL_CODE order by  countNumber desc </sql>
---医嘱项目与收费项目对应表  
+--医嘱项目与收费项目对应表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ORDER_PROJ_CODE,CHARGE_ITEM_CODE  from BD_DIAG_TREAT_FEE_ITEMS   group by  HQ_ORG_CODE,ORDER_PROJ_CODE,CHARGE_ITEM_CODE order by  countNumber desc </sql>
---数据字典对应表  
+--数据字典对应表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,IN_HOSPITAL_DICT_CODE,DICT_LIST_CODE   from BD_DICTIONARY_CORR   group by  HQ_ORG_CODE,IN_HOSPITAL_DICT_CODE,DICT_LIST_CODE  order by  countNumber desc </sql>
---疾病诊断目录  
+--疾病诊断目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,IN_HOSP_DIAGNOSIS_CODE ,DIAGNOSIS_TYPE_CODE  from BD_DISEASE_DIAGNOSIS   group by  HQ_ORG_CODE,IN_HOSP_DIAGNOSIS_CODE ,DIAGNOSIS_TYPE_CODE order by  countNumber desc </sql>
---手术目录  
+--手术目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,IN_HOSP_OPERATION_CODE  from BD_OPERATIVE_INFO   group by  HQ_ORG_CODE,IN_HOSP_OPERATION_CODE order by  countNumber desc </sql>
---医保目录  
+--医保目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,MEDI_GEN_ITEM_CODE  from BD_BASE_MEDI_DIR   group by  HQ_ORG_CODE,MEDI_GEN_ITEM_CODE order by  countNumber desc </sql>
---药品基本信息  
+--药品基本信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,MEDICAL_CODE  from BD_DRUG_BASE_INFO   group by  HQ_ORG_CODE,MEDICAL_CODE order by  countNumber desc </sql>
---药品出入库明细  
+--药品出入库明细
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,WAREHOUSE_DETAIL_NO,MEDICAL_CODE  from BD_DRUG_WAREHOUSE_DETAIL where IN_OUT_WAREHOUSE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,WAREHOUSE_DETAIL_NO,MEDICAL_CODE order by  countNumber desc </sql>
---药品库存信息  
+--药品库存信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,WAREHOUSE_NO  from BD_DRUG_INVENTORY_INFO where WAREHOUSE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,WAREHOUSE_NO order by  countNumber desc </sql>
---药品厂家信息  
+--药品厂家信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,SUPPLIER_CODE,FACTORY_TYPE_CODE   from BD_DRUG_FACTORY_INFO   group by  HQ_ORG_CODE,SUPPLIER_CODE,FACTORY_TYPE_CODE  order by  countNumber desc </sql>
---药品调价历史  
+--药品调价历史
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,MODIFY_PRICE_NO  from BD_DRUG_ADJUS_PRICE_INFO where MODIFY_PRICE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,MODIFY_PRICE_NO order by  countNumber desc </sql>
---耗材入库表  
+--耗材入库表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,BAR_CODE  from BD_CON_WAREHOUSE where DBILL_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,BAR_CODE order by  countNumber desc </sql>
---耗材出库表  
+--耗材出库表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VBILL_CODE,MATERIAL_CODE  from BD_CON_WAREHOUS_OUT where DBILL_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,VBILL_CODE,MATERIAL_CODE order by  countNumber desc </sql>
---高值耗材使用记录  
+--高值耗材使用记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,CONSUMABLE_USE_NO  from MP_HIGH_VAL_CON_USE_RECO where USE_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,CONSUMABLE_USE_NO order by  countNumber desc </sql>
---患者基本信息  
+--患者基本信息
  <sql>select  top 3 id ,count(*) countNumber  ,ORG_PATIENT_SN  from PI_PATIENT_INFO where REGIST_TIME  >='2017-01-01'  group by  ORG_PATIENT_SN order by  countNumber desc </sql>
---门诊排班信息  
+--门诊排班信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,FIRSTV_TIME,DOCTOR_CODE,FIRSTV_INDICATOR_FLAG  from EN_OUTPATIENT_SCHEDULING where FIRSTV_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,FIRSTV_TIME,DOCTOR_CODE,FIRSTV_INDICATOR_FLAG order by  countNumber desc </sql>
---门诊挂号表  
+--门诊挂号表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG  from EN_OUTPATIENT_REGIST where REGIST_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG order by  countNumber desc </sql>
---门诊就诊记录表  
+--门诊就诊记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO  from EN_OUTPATIENT_VISIT where VISIT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO order by  countNumber desc </sql>
---门诊诊疗处方  
+--门诊诊疗处方
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_ID,PRESCRIP_NUMBER,RECODE_STATE  from EN_OUTPATIENT_PRESC where PRESCRIPTION_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_ID,PRESCRIP_NUMBER,RECODE_STATE order by  countNumber desc </sql>
---门诊发药表  
+--门诊发药表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_ID,PRESCRIP_NUMBER,STATUS_FLAG  from EN_OUTPATIENT_MEDI_SCHED where DISPENSING_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_ID,PRESCRIP_NUMBER,STATUS_FLAG order by  countNumber desc </sql>
---退药表  
+--退药表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,PRES_ITEM_NUM,REFUND_ID  from EN_WITHDRAWAL where DRUG_REPER_REQUEST_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,PRES_ITEM_NUM,REFUND_ID order by  countNumber desc </sql>
---诊断表  
+--诊断表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DIAG_SERIAL_NO,VISIT_SERIAL_NO  from EN_DIAGNOSIS where DIAGNOSIS_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,DIAG_SERIAL_NO,VISIT_SERIAL_NO order by  countNumber desc </sql>
---处方与诊断表  
+--处方与诊断表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,DIAG_SERIAL_NO  from EN_PRESC_DIAGNOSIS where DIAGNOSIS_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,DIAG_SERIAL_NO order by  countNumber desc </sql>
---入院登记信息  
+--入院登记信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,INPATIENT_SERIAL_NUMBER  from EN_INPATIENT_REGIST_INFO where INHOSPITAL_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,INPATIENT_SERIAL_NUMBER order by  countNumber desc </sql>
---住院就诊记录表  
+--住院就诊记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,INPATIENT_SERIAL_NUMBER  from EN_INPATIENT_VISIT where INHOSPITAL_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,INPATIENT_SERIAL_NUMBER order by  countNumber desc </sql>
---住院医嘱明细表  
+--住院医嘱明细表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ORDER_ID,VISIT_SERIAL_NO  from EN_INPATIENT_ORDER_DETAIL where ORDER_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,ORDER_ID,VISIT_SERIAL_NO order by  countNumber desc </sql>
---住院发药记录  
+--住院发药记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,DISPENSER_ID  from EN_INPATIENT_MEDI_SCHED where DISPENSING_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,DISPENSER_ID order by  countNumber desc </sql>
---住院发药明细表  
+--住院发药明细表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_ID,DISPENSER_ID  from EN_INPATIENT_MEDI_SCHED_DETAIL where DISPENSING_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_ID,DISPENSER_ID order by  countNumber desc </sql>
---门诊收费汇总表  
+--门诊收费汇总表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM,FEE_DETAIL_SERIAL_NUM  from EN_OUTPATIENT_FEE_SUMM where CHARGE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM,FEE_DETAIL_SERIAL_NUM order by  countNumber desc </sql>
---门诊收费明细表  
+--门诊收费明细表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM,FEE_DETAIL_SERIAL_NUM  from EN_OUTPATIENT_FEE_DETAIL where CHARGE_RETURN_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM,FEE_DETAIL_SERIAL_NUM order by  countNumber desc </sql>
---住院收费汇总表（已结算）  
+--住院收费汇总表（已结算）
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM  from EN_INPATIENT_FEE_SUMM where CHARGE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM order by  countNumber desc </sql>
---住院收费明细表（已结算）  
+--住院收费明细表（已结算）
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM  from EN_INPATIENT_FEE_DETAIL where CHARGE_RETURN_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,CHARGE_SERIAL_NUM order by  countNumber desc </sql>
---检验记录表  
+--检验记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,LAB_SERIAL_NUMBER  from EN_LAB_INFO where APPLY_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,LAB_SERIAL_NUMBER order by  countNumber desc </sql>
---细菌结果表  
+--细菌结果表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,BACTERIA_RESULT_ID,LAB_SERIAL_NUMBER  from EN_BACTERIAL_RESULT where REPORT_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,BACTERIA_RESULT_ID,LAB_SERIAL_NUMBER order by  countNumber desc </sql>
---过敏信息表  
+--过敏信息表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,ALLERGY_TYPE_CODE   from EN_ALLERGY_INFO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,ALLERGY_TYPE_CODE  order by  countNumber desc </sql>
---药敏结果表  
+--药敏结果表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,SUSCEPT_RESULT_SERIAL_NUM,BACTERIA_CODE  from EN_DRUG_SENSIT_RESULTS where REPORT_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,SUSCEPT_RESULT_SERIAL_NUM,BACTERIA_CODE order by  countNumber desc </sql>
---检验结果指标表  
+--检验结果指标表
  <sql>select  top 3 id ,count(*) countNumber  , HQ_ORG_CODE,LAB_DETAIL_SERIAL_NUMBER  from EN_LAB_RESULT where REPORT_TIME  >='2017-01-01'  group by   HQ_ORG_CODE,LAB_DETAIL_SERIAL_NUMBER order by  countNumber desc </sql>
---检查预约表  
+--检查预约表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,EXAM_SERIAL_NUMBER,VISIT_SERIAL_NO  from EN_EXAM_APPO_INFO where APPOINTEXAM_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,EXAM_SERIAL_NUMBER,VISIT_SERIAL_NO order by  countNumber desc </sql>
---检查记录表  
+--检查记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,EXAM_SERIAL_NUMBER  from EN_EXAM_RECORD_INFO where RIS_CHECK_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,EXAM_SERIAL_NUMBER order by  countNumber desc </sql>
---手术申请单  
+--手术申请单
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,SURGERY_APPLY_NO  from EN_OPERATION_REQUEST where APPLY_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,SURGERY_APPLY_NO order by  countNumber desc </sql>
---手术安排  
+--手术安排
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,SURGERY_APPLY_NO,SURG_NUMBER,OPER_DATE  from EN_OPERATION_RANG where OPER_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,SURGERY_APPLY_NO,SURG_NUMBER,OPER_DATE order by  countNumber desc </sql>
---麻醉安排  
+--麻醉安排
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,SURGERY_APPLY_NO  from EN_ANESTHESIA_RANG where OPER_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,SURGERY_APPLY_NO order by  countNumber desc </sql>
---手术用药  
+--手术用药
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_NO  from EN_OPERATION_MEDICAL where MEDICAL_BEGIN_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,ORDER_NO order by  countNumber desc </sql>
---输血申请  
+--输血申请
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,APPLY_NO,VISIT_SERIAL_NO  from EN_BLOOD_TRANS_REQUEST where APPLY_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,APPLY_NO,VISIT_SERIAL_NO order by  countNumber desc </sql>
---配血记录  
+--配血记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,MATCH_NUMBER,BLOOD_PACKAGE_CODE  from EN_BLOOD_MATCH_RECORD where PREPARE_BLOOD_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,MATCH_NUMBER,BLOOD_PACKAGE_CODE order by  countNumber desc </sql>
---输血记录表  
+--输血记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,BLOOD_TRANS_SERIAL_NUM, BLOOD_PACKAGE_CODE  from EN_BLOOD_RECORD_INFO where APPLY_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,BLOOD_TRANS_SERIAL_NUM, BLOOD_PACKAGE_CODE order by  countNumber desc </sql>
---病历文书汇总  
+--病历文书汇总
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,DOCUMENT_SERIAL_NUMBER  from MR_MEDICAL_RECORD_SUMM where DOCUMENT_TATLE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,DOCUMENT_SERIAL_NUMBER order by  countNumber desc </sql>
---西医住院病案首页  
+--西医住院病案首页
  <sql>select  top 3 id ,count(*) countNumber  , HQ_ORG_CODE,VISIT_SERIAL_NO  from MR_WEST_INPATIENT_HOMEPAGE where DISCHARGE_TIME  >='2017-01-01'  group by   HQ_ORG_CODE,VISIT_SERIAL_NO order by  countNumber desc </sql>
---中医住院病案首页  
+--中医住院病案首页
  <sql>select  top 3 id ,count(*) countNumber  , HQ_ORG_CODE,VISIT_SERIAL_NO  from MR_CH_INPATIENT_HOMEPAGE where DISCHARGE_DATE_TIME  >='2017-01-01'  group by   HQ_ORG_CODE,VISIT_SERIAL_NO order by  countNumber desc </sql>
---门（急）诊病历  
+--门（急）诊病历
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_INPATIENT_MEDICAL_RECORD where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---急诊留观病历  
+--急诊留观病历
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_EMERG_STAY_MED_RECORD where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---卫生事件摘要  
+--卫生事件摘要
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_HEALTH_EVENTS_SUMM where VISIT_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---基本健康信息  
+--基本健康信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_BASE_HEALTH_INFO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---入院记录  
+--入院记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_INPATIETN_INFO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---24小时入出院死亡记录  
+--24小时入出院死亡记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_24H_INPATIENT_INFO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---首次病程记录  
+--首次病程记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_FIRST_COURSE_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---日常病程记录  
+--日常病程记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_DAILY_COURSE_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---上级医师查房记录  
+--上级医师查房记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_SUP_PHYS_WA_ROU_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---疑难病例讨论  
+--疑难病例讨论
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_DIFFICULT_CASE_DISCUSS where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---交接班记录  
+--交接班记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_SHIFT_HANDOVER_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---转科记录  
+--转科记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_TRANSFER_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---阶段小结  
+--阶段小结
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_STAGES_SUMMARY where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---会诊记录  
+--会诊记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_CONSULTATION_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---术前小结  
+--术前小结
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_PREOPERATIVE_SUMMARY where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---术前讨论  
+--术前讨论
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_PREOPERATIVE_DISCUSS where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---手术记录  
+--手术记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,SURGERY_DETAIL_NO,SURGERY_APPLY_NO,VISIT_SERIAL_NO  from MR_OPERATIVE_RECORD where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,SURGERY_DETAIL_NO,SURGERY_APPLY_NO,VISIT_SERIAL_NO order by  countNumber desc </sql>
---术后首次病程记录  
+--术后首次病程记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_FIRST_POS_COURSE_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---出院记录  
+--出院记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_DISCHARGE_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---死亡记录  
+--死亡记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_DEATH_RECORD where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---死亡病例讨论记录  
+--死亡病例讨论记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_DEATH_CASE_DISC_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---手术同意  
+--手术同意
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_OPERATION_CONSENT where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---麻醉知情通知  
+--麻醉知情通知
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_ANESTHESIA_INFO_NOTICE where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---输血治疗同意书  
+--输血治疗同意书
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_BLOOD_TRAN_TRE_CONS where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---特殊检查及特殊治疗同意书  
+--特殊检查及特殊治疗同意书
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_SP_EXA_SPE_TRE_CONS where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---病危（重通知书）  
+--病危（重通知书）
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_CRITICAL_ILLNESS_NOTICE where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---其他知情同意书  
+--其他知情同意书
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_OTHER_INFORMED_CONS where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---待产记录  
+--待产记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_WAIT_CHILDBIRTH_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---阴道分娩记录  
+--阴道分娩记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_VAGINAL_DELIVERY_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---剖宫产手术记录  
+--剖宫产手术记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_CESAREAN_SECTION_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---治疗处置记录表  
+--治疗处置记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_TREATMENT_RECORD where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---麻醉术前访视记录  
+--麻醉术前访视记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_ANES_PREOP_VISIT_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---麻醉记录  
+--麻醉记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_ANESTHESIA_RECORD where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---麻醉术后访视记录  
+--麻醉术后访视记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_POST_ANES_VISIT_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---抢救记录表  
+--抢救记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MR_RESCUE_RECORD where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---上报卡  
+--上报卡
  <sql>select  top 3 id ,count(*) countNumber  , HQ_ORG_CODE,VISIT_SERIAL_NO,FILE_NO  from MR_REPORT_CARD where REPORT_TIME  >='2017-01-01'  group by   HQ_ORG_CODE,VISIT_SERIAL_NO,FILE_NO order by  countNumber desc </sql>
---感染上报  
+--感染上报
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO  from MR_INFECTION_REPORT where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO order by  countNumber desc </sql>
---一般护理记录  
+--一般护理记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_GENERAL_CARE_RECO where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---手术护理功能  
+--手术护理功能
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_OPER_NURSE_FUNC where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---生命体征测量记录  
+--生命体征测量记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO,RECORD_DATE_TIME  from MP_VITAL_SIGN_MEAS_RECO where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO,RECORD_DATE_TIME order by  countNumber desc </sql>
---出入量记录  
+--出入量记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_IN_OUT_MEASURE_RECO where RECORD_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---病危（重）护理记录  
+--病危（重）护理记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_CRITICAL_CARE_RECORD where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---特级护理记录  
+--特级护理记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_SUPER_CARE_RECORD where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---入院评估记录  
+--入院评估记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_ADMISSION_ASSE_RECO where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---护理计划记录  
+--护理计划记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_NURSE_PLAN_RECO where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---出院评估与指导记录  
+--出院评估与指导记录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO  from MP_DISC_ASSE_GUID_RECO where SIGN_DATETIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RECORD_NO order by  countNumber desc </sql>
---临床路径  
+--临床路径
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,PATH_SERIAL_NO  from MP_ACCESS_CLINICAL_PATH where CP_IN_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,PATH_SERIAL_NO order by  countNumber desc </sql>
---变异原因记录表  
+--变异原因记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,VARIATION_ID  from MP_NOT_INC_WIT_VAR_REA_RECO where CONFIRM_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,VARIATION_ID order by  countNumber desc </sql>
---临床路径诊断  
+--临床路径诊断
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,PATH_SERIAL_NO,DIAGNOSIS_INFO_CODE  from MP_CLINICAL_PATH_DIAGNOSIS where DIAGNOSIS_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,PATH_SERIAL_NO,DIAGNOSIS_INFO_CODE order by  countNumber desc </sql>
---就诊记录表（体检）  
+--就诊记录表（体检）
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,TEST_SERIAL_NO  from PH_VISIT_RECORD_TJ where TEST_DATE_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,TEST_SERIAL_NO order by  countNumber desc </sql>
---体检总检表  
+--体检总检表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,TEST_SERIAL_NO  from PH_GENERAL_PHYSICAL_EXAM where ALL_CHECK_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,TEST_SERIAL_NO order by  countNumber desc </sql>
---体格及功能检查报告表  
+--体格及功能检查报告表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,REPORT_SERIAL_NO,CHECK_COMPOSE_NAME  from PH_PHYSICAL_FUNC_EXAM where REPORT_DATE  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,REPORT_SERIAL_NO,CHECK_COMPOSE_NAME order by  countNumber desc </sql>
---体格及功能检查明细表  
+--体格及功能检查明细表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,TEST_DETAILED_ID  from PH_PHYSICAL_FUNC_EXAM_LIST where EXAM_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,TEST_DETAILED_ID order by  countNumber desc </sql>
---会计总账数据表  
+--会计总账数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ACCO_SUBJ_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_ACCT_LEDGER where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,ACCO_SUBJ_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---基本数字数据表  
+--基本数字数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,BASE_NUM_ITEM_CODE,DEPT_CODE,REPORT_TIME  from ST_BUSI_BASIC_NUMBER where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,BASE_NUM_ITEM_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---现金流量数据表  
+--现金流量数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ACCO_SUBJ_CODE,DEPT_CODE,REPORT_TIME  from ST_ACCT_CASH_FLOW where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,ACCO_SUBJ_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---资产负债数据表  
+--资产负债数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ASSETS_LIAB_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_BALANCE_SHEET where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,ASSETS_LIAB_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医院收入费用总表  
+--医院收入费用总表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,INCOME_ITEM_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_INCOME_SUM where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,INCOME_ITEM_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---业务收入费用数据表  
+--业务收入费用数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,CHARGEITEM_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_STD_INCOME where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,CHARGEITEM_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医疗支出数据表  
+--医疗支出数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,COST_ITEM,DEPT_CODE,REPORT_TIME  from ST_BASE_STD_FUND_COST where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,COST_ITEM,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---固定资产卡片信息表  
+--固定资产卡片信息表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,EQUI_ARCH_NO,DEPT_CODE,REPORT_TIME  from ST_BUSI_EQUI_CARD where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,EQUI_ARCH_NO,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---固定资产汇总表  
+--固定资产汇总表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,EQUI_CODE,DEPT_CODE,REPORT_TIME  from ST_BUSI_EQUI_BALANCE where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,EQUI_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---固定资产折旧表  
+--固定资产折旧表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,EQUI_ARCH_NO,DEPT_CODE,REPORT_TIME  from ST_BUSI_EQUI_DEPRE where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,EQUI_ARCH_NO,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医疗设备分类信息表  
+--医疗设备分类信息表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEVICE_CODE,REPORT_TIME  from ST_BUSI_EQUI_ITEM_VALUE where PURCH_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,DEVICE_CODE,REPORT_TIME order by  countNumber desc </sql>
---设备信息表  
+--设备信息表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,SEQUENCE_CODE,DEPT_CODE,REPORT_TIME  from ST_FACT_EQUI_INFO where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,SEQUENCE_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医保收入数据表  
+--医保收入数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,INCOME_ITEM_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_MEDI_INSUR_INC where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,INCOME_ITEM_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医保工作量数据表  
+--医保工作量数据表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,WORK_SUBJ_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_MEDI_INSUR_WORK where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,WORK_SUBJ_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医院分担超指标数据  
+--医院分担超指标数据
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_MEDI_PRE_PAY where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---医保费用情况信息表  
+--医保费用情况信息表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEPT_CODE,REPORT_TIME  from ST_BASE_MEDI_INFO where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
---单病种信息表  
+--单病种信息表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEPT_CODE,REPORT_TIME,SINGLE_DRUGS_CODE  from ST_SINGLE_DRUGS_INFO where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,DEPT_CODE,REPORT_TIME,SINGLE_DRUGS_CODE order by  countNumber desc </sql>
---全院床位使用情况统计表  
+--全院床位使用情况统计表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEPT_CODE,REPORT_TIME  from ST_RSG_BEDSINHOS_INFO where REPORT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,DEPT_CODE,REPORT_TIME order by  countNumber desc </sql>
 </sqls>

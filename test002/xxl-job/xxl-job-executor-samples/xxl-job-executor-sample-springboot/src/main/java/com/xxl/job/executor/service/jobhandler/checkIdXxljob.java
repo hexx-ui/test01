@@ -32,12 +32,12 @@ import static com.xxl.job.core.biz.model.ReturnT.*;
 public class checkIdXxljob {
     private static Logger logger = LoggerFactory.getLogger(SampleXxlJob.class);
     // 服务器
-    public static final String CHECK_ID_XML_PATH = "/var/local/job/checkXml/checkId.xml";
-    public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "/var/local/job/checkXml/patAssociated.xml";
+    //   public static final String CHECK_ID_XML_PATH = "/var/local/job/checkXml/checkId.xml";
+    //   public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "/var/local/job/checkXml/patAssociated.xml";
 
     // wen10
-    // public static final String CHECK_ID_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\checkId.xml";
-    // public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
+     public static final String CHECK_ID_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\checkId.xml";
+     public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
     public static final String CHECK_ID = " 错误的数据表： ";
 
 
@@ -53,25 +53,35 @@ public class checkIdXxljob {
 
         // 获取需要校验的SQL集合
         List<String> sqlList = getSqlList(CHECK_ID_XML_PATH);
+        System.out.println("______________________ID一致性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
             List<checkVo> voList = primarykeyMapper.checkId(sql);
-            for (checkVo vo :voList) {
+            for (checkVo vo : voList) {
                 if (vo.getCountNumber() > 1) {
-                    errCount ++;
+                    errCount++;
                     String[] arr = sql.split("from");
-                    String[] arr1 = arr[1].split("group");
-                    errTable += arr1[0] +" /tr";
+                    String[] arr1 ;
+                    if (arr[1].contains("where")) {
+                        arr1 = arr[1].split("where");
+                    } else {
+                        arr1 = arr[1].split("group");
+                    }
+                    errTable += arr1[0] + "     ";
                     break;
                 }
             }
         }
 
         if(errCount>0){
-            return new ReturnT(FAIL_CODE, CHECK_ID +errTable);
+            returnT.setCode(FAIL_CODE);
+            returnT.setMsg(CHECK_ID +errTable);
+            return returnT;
+        }else {
+            returnT.setCode(SUCCESS_CODE);
+            returnT.setMsg("数据ID一致性校验通过!");
+            return returnT;
         }
-
-        return SUCCESS;
     }
 
     // 校验数据患者关联性
@@ -82,6 +92,7 @@ public class checkIdXxljob {
         System.out.println("_________________________"+ System.getProperty("user.dir"));
         // 获取需要校验的SQL集合
         List<String> sqlList = getSqlList(CHECK_PAT_ASSOCIATED_XML_PATH);
+        System.out.println("______________________患者关联性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
             List<checkVo> voList = primarykeyMapper.checkId(sql);
@@ -89,18 +100,22 @@ public class checkIdXxljob {
                 if (StringUtils.isEmpty(vo.getOrgPatientSn()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
                     errCount ++;
                     String[] arr = sql.split("from");
-                    String[] arr1 = arr[1].split("group");
-                    errTable += arr1[0] +" /tr";
+                    String[] arr1 = arr[1].split("a  left join");
+                    errTable += arr1[0] +"     ";
                     break;
                 }
             }
         }
 
         if(errCount>0){
-            return new ReturnT(FAIL_CODE, CHECK_ID +errTable);
+            returnT.setCode(FAIL_CODE);
+            returnT.setMsg(CHECK_ID +errTable);
+            return returnT;
+        }else {
+            returnT.setCode(SUCCESS_CODE);
+            returnT.setMsg("数据患者关联性通过!");
+            return returnT;
         }
-
-        return SUCCESS;
     }
     // 解析 xml 获取sql队列
     public List<String> getSqlList(String xmlPath) {
