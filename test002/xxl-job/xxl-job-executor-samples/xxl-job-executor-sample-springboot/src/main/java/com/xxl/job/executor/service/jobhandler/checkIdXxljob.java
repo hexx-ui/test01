@@ -67,7 +67,7 @@ public class checkIdXxljob {
                     } else {
                         arr1 = arr[1].split("group");
                     }
-                    errTable += arr1[0] + "     ";
+                    errTable += arr1[0] + ",     ";
                     break;
                 }
             }
@@ -97,11 +97,11 @@ public class checkIdXxljob {
         for (String sql : sqlList) {
             List<checkVo> voList = primarykeyMapper.checkId(sql);
             for (checkVo vo :voList) {
-                if (StringUtils.isEmpty(vo.getOrgPatientSn()) || StringUtils.isEmpty(vo.getOrgPatientSnB()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
+                if (vo == null || StringUtils.isEmpty(vo.getOrgPatientSn()) || StringUtils.isEmpty(vo.getOrgPatientSnB()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
                     errCount ++;
                     String[] arr = sql.split("from");
                     String[] arr1 = arr[1].split("a  left join");
-                    errTable += arr1[0] +"     ";
+                    errTable += arr1[0] +",     ";
                     break;
                 }
             }

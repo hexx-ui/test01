@@ -150,10 +150,6 @@
 <sql> select top 3 a.id, a.ORG_PATIENT_SN orgPatientSn, b.ORG_PATIENT_SN orgPatientSnB  from  MP_IN_OUT_MEASURE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN  where a.RECORD_DATE_TIME  >='2017-01-01'  order by orgPatientSnB   </sql>
 --高值耗材使用记录
 <sql> select top 3 a.id, a.ORG_PATIENT_SN orgPatientSn, b.ORG_PATIENT_SN orgPatientSnB  from  MP_HIGH_VAL_CON_USE_RECO   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN  where a.USE_DATE_TIME  >='2017-01-01'  order by orgPatientSnB   </sql>
---耗材入库表
-<sql> select top 3 a.id, a.ORG_PATIENT_SN orgPatientSn, b.ORG_PATIENT_SN orgPatientSnB  from  BD_CON_WAREHOUSE   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN  where a.DBILL_DATE  >='2017-01-01'  order by orgPatientSnB   </sql>
---耗材出库表
-<sql> select top 3 a.id, a.ORG_PATIENT_SN orgPatientSn, b.ORG_PATIENT_SN orgPatientSnB  from  BD_CON_WAREHOUS_OUT   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN  where a.DBILL_DATE  >='2017-01-01'  order by orgPatientSnB   </sql>
 --病危（重）护理记录
 <sql> select top 3 a.id, a.ORG_PATIENT_SN orgPatientSn, b.ORG_PATIENT_SN orgPatientSnB  from  MP_CRITICAL_CARE_RECORD   a  left join   PI_PATIENT_INFO b  on  a.ORG_PATIENT_SN=b.ORG_PATIENT_SN  where a.SIGN_DATETIME  >='2017-01-01'  order by orgPatientSnB   </sql>
 --特级护理记录
