@@ -32,12 +32,12 @@ import static com.xxl.job.core.biz.model.ReturnT.*;
 public class checkIdXxljob {
     private static Logger logger = LoggerFactory.getLogger(SampleXxlJob.class);
     // 服务器
-    //   public static final String CHECK_ID_XML_PATH = "/var/local/job/checkXml/checkId.xml";
-    //   public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "/var/local/job/checkXml/patAssociated.xml";
+       public static final String CHECK_ID_XML_PATH = "/var/local/job/checkXml/checkId.xml";
+       public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "/var/local/job/checkXml/patAssociated.xml";
 
     // wen10
-     public static final String CHECK_ID_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\checkId.xml";
-     public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
+    // public static final String CHECK_ID_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\checkId.xml";
+    // public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
     public static final String CHECK_ID = " 错误的数据表： ";
 
 
@@ -97,7 +97,7 @@ public class checkIdXxljob {
         for (String sql : sqlList) {
             List<checkVo> voList = primarykeyMapper.checkId(sql);
             for (checkVo vo :voList) {
-                if (StringUtils.isEmpty(vo.getOrgPatientSn()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
+                if (StringUtils.isEmpty(vo.getOrgPatientSn()) || StringUtils.isEmpty(vo.getOrgPatientSnB()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
                     errCount ++;
                     String[] arr = sql.split("from");
                     String[] arr1 = arr[1].split("a  left join");
