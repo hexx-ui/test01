@@ -108,7 +108,7 @@
 <sql>select count(*)  countNumber from PH_PHYSICAL_FUNC_EXAM  where REPORT_DATE >='2017-01-01'</sql>
 <sql>select count(*)  countNumber from PH_PHYSICAL_FUNC_EXAM_LIST  where EXAM_TIME >='2017-01-01'</sql>
 <sql>select count(*)  countNumber from ST_BASE_ACCT_LEDGER  where REPORT_TIME >='2017-01-01'</sql>
-<sql>select count(*)  countNumber from ST_BUSI_BASIC_countNumber  where REPORT_TIME >='2017-01-01'</sql>
+<sql>select count(*)  countNumber from ST_BUSI_BASIC_NUMBER  where REPORT_TIME >='2017-01-01'</sql>
 <sql>select count(*)  countNumber from ST_ACCT_CASH_FLOW  where REPORT_TIME >='2017-01-01'</sql>
 <sql>select count(*)  countNumber from ST_BASE_BALANCE_SHEET  where REPORT_TIME >='2017-01-01'</sql>
 <sql>select count(*)  countNumber from ST_BASE_INCOME_SUM  where REPORT_TIME >='2017-01-01'</sql>
