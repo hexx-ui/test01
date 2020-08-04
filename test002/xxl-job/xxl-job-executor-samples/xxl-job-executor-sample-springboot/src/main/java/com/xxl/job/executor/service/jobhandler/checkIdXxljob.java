@@ -19,7 +19,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.xxl.job.core.biz.model.ReturnT.*;
+import static com.xxl.job.core.biz.model.ReturnT.FAIL_CODE;
+import static com.xxl.job.core.biz.model.ReturnT.SUCCESS_CODE;
 
 /**
  * @description: 数据校验JOB
@@ -39,13 +40,16 @@ public class checkIdXxljob {
     // public static final String CHECK_PAT_ASSOCIATED_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\patAssociated.xml";
     // public static final String TABLE_COUNT_CHECK_XML_PATH = "xxl-job-executor-samples\\xxl-job-executor-sample-springboot\\checkXml\\tableCountcheck.xml";
 
-    public static final String CHECK_ID = " 错误的数据表： ";
+    public static final String CHECK_ID = " 数据ID一致性错误的数据表： ";
+    public static final String CHECK_Pat = " 患者关联性错误的数据表： ";
+    public static final String CHECK_7074Count = " 7074表数据总量不一致的数据表： ";
+
 
 
     @Autowired
-    Primary70Mapper primary70Mapper;
+    private Primary70Mapper primary70Mapper;
     @Autowired
-    Primary74Mapper primary74Mapper;
+    private Primary74Mapper primary74Mapper;
 
     ReturnT returnT = new ReturnT();
 
@@ -60,7 +64,7 @@ public class checkIdXxljob {
         System.out.println("______________________ID一致性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
-            List<checkVo> voList = primary70Mapper.checkId(sql);
+            List<checkVo> voList = primary70Mapper.checkdb70(sql);
             for (checkVo vo : voList) {
                 if (vo.getCountNumber() > 1) {
                     errCount++;
@@ -99,7 +103,7 @@ public class checkIdXxljob {
         System.out.println("______________________患者关联性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
-            List<checkVo> voList = primary70Mapper.checkId(sql);
+            List<checkVo> voList = primary70Mapper.checkdb70(sql);
             for (checkVo vo :voList) {
                 if (vo == null || StringUtils.isEmpty(vo.getOrgPatientSn()) || StringUtils.isEmpty(vo.getOrgPatientSnB()) || !vo.getOrgPatientSn().equals(vo.getOrgPatientSnB())) {
                     errCount ++;
@@ -113,7 +117,7 @@ public class checkIdXxljob {
 
         if(errCount>0){
             returnT.setCode(FAIL_CODE);
-            returnT.setMsg(CHECK_ID +errTable);
+            returnT.setMsg(CHECK_Pat +errTable);
             return returnT;
         }else {
             returnT.setCode(SUCCESS_CODE);
@@ -133,10 +137,11 @@ public class checkIdXxljob {
         System.out.println("______________________表数据总量一致性执行SQL数"+ sqlList.size() );
         // 执行SQL 判断结果是否符合预期
         for (String sql : sqlList) {
-            List<checkVo> voList70 = primary70Mapper.checkId(sql);
-            List<checkVo> voList74 = primary74Mapper.checkId(sql);
+            List<checkVo> voList70 = primary70Mapper.checkdb70(sql);
+            List<checkVo> voList74 = primary74Mapper.checkdb74(sql);
             for (int i = 0; i < voList70.size(); i++) {
-                if (voList70.get(i) != null && voList74.get(i) != null && voList70.get(i).getCountNumber() != voList74.get(i).getCountNumber()) {
+                if (voList70.get(i) != null && voList74.get(i) != null && voList70.get(i).getCountNumber() != null && voList74.get(i).getCountNumber() != null
+                        && !voList70.get(i).getCountNumber().equals(voList74.get(i).getCountNumber())) {
                     errCount++;
                     String[] arr = sql.split("from");
                     String[] arr1 ;
@@ -153,7 +158,7 @@ public class checkIdXxljob {
 
         if(errCount>0){
             returnT.setCode(FAIL_CODE);
-            returnT.setMsg(CHECK_ID +errTable);
+            returnT.setMsg(CHECK_7074Count +errTable);
             return returnT;
         }else {
             returnT.setCode(SUCCESS_CODE);

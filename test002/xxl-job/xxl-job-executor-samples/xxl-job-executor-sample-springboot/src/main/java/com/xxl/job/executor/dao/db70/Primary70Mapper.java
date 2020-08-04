@@ -23,6 +23,6 @@ public interface Primary70Mapper {
      */
     @Select("<script>${sql}</script>")
     @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = false,timeout = 10000)
-    List<checkVo> checkId(@Param("sql") String sql);
+    List<checkVo> checkdb70(@Param("sql") String sql);
 
 }

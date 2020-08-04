@@ -26,18 +26,6 @@ import java.util.Map;
 @Slf4j
 @Configuration
 public class MybatisPlusConfig {
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        log.debug("注册分页插件");
-
-
-        // 自定义分页
-        CountSqlInterceptor countSqlInterceptor = new CountSqlInterceptor() ;
-        MyPaginationInterceptor paginationInterceptor = new MyPaginationInterceptor();
-        paginationInterceptor.setCountSqlParser(countSqlInterceptor);
-
-        return paginationInterceptor;
-    }
 
     @Bean(name = "db70")
     @ConfigurationProperties(prefix = "spring.datasource.druid.db70")
