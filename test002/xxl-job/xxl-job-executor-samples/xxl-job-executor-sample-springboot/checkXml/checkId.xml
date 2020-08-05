@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <sqls>
---医护人员信息表  
+--医护人员信息表
   <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DOCTOR_CODE  from BD_EMPL_DOCTOR_INFO   group by  HQ_ORG_CODE,DOCTOR_CODE order by  countNumber desc </sql>
---仪器设备表  
+--仪器设备表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEVICE_CODE  from BD_EQUIP_INFO   group by  HQ_ORG_CODE,DEVICE_CODE order by  countNumber desc </sql>
---科室信息  
+--科室信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,DEPT_CODE  from BD_DEPT_INFO   group by  HQ_ORG_CODE,DEPT_CODE order by  countNumber desc </sql>
---收费项目目录  
+--收费项目目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,PROJECT_CODE  from BD_CHARGE_ITEM_INFO   group by  HQ_ORG_CODE,PROJECT_CODE order by  countNumber desc </sql>
 --临床项目目录
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,ORDER_PROJ_CODE  from BD_CLINICAL_ITEM_INFO   group by  HQ_ORG_CODE,ORDER_PROJ_CODE order by  countNumber desc </sql>
@@ -43,7 +43,7 @@
 --门诊排班信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,FIRSTV_TIME,DOCTOR_CODE,FIRSTV_INDICATOR_FLAG  from EN_OUTPATIENT_SCHEDULING where FIRSTV_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,FIRSTV_TIME,DOCTOR_CODE,FIRSTV_INDICATOR_FLAG order by  countNumber desc </sql>
 --门诊挂号表
- <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG  from EN_OUTPATIENT_REGIST where REGIST_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG order by  countNumber desc </sql>
+ <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG  from EN_OUTPATIENT_REGIST where REGIST_TIME  >='2017-01-01' and  VISIT_SERIAL_NO &lt;&gt;1812046446' and VISIT_SERIAL_NO&lt;&gt;1812046604'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG order by  countNumber desc </sql>
 --门诊就诊记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO  from EN_OUTPATIENT_VISIT where VISIT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO order by  countNumber desc </sql>
 --门诊诊疗处方
