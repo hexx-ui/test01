@@ -43,7 +43,7 @@
 --门诊排班信息
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,FIRSTV_TIME,DOCTOR_CODE,FIRSTV_INDICATOR_FLAG  from EN_OUTPATIENT_SCHEDULING where FIRSTV_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,FIRSTV_TIME,DOCTOR_CODE,FIRSTV_INDICATOR_FLAG order by  countNumber desc </sql>
 --门诊挂号表
- <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG  from EN_OUTPATIENT_REGIST where REGIST_TIME  >='2017-01-01' and  VISIT_SERIAL_NO &lt;&gt;1812046446' and VISIT_SERIAL_NO&lt;&gt;1812046604'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG order by  countNumber desc </sql>
+ <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG  from EN_OUTPATIENT_REGIST where REGIST_TIME  >='2017-01-01' and  VISIT_SERIAL_NO &lt;&gt;'1812046446' and VISIT_SERIAL_NO &lt;&gt;'1812046604'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO,RETURN_FLAG order by  countNumber desc </sql>
 --门诊就诊记录表
  <sql>select  top 3 id ,count(*) countNumber  ,HQ_ORG_CODE,VISIT_SERIAL_NO  from EN_OUTPATIENT_VISIT where VISIT_TIME  >='2017-01-01'  group by  HQ_ORG_CODE,VISIT_SERIAL_NO order by  countNumber desc </sql>
 --门诊诊疗处方
