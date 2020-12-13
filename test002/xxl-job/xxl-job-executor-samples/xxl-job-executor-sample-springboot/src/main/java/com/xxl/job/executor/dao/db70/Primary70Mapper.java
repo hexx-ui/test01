@@ -30,7 +30,7 @@ public interface Primary70Mapper {
      */
     @Select("<script>${sql}</script>")
     @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = false,timeout = 10000)
-    List<HashMap<String,Object>> SelectHashMapList(@Param("sql") String sql);
+    List<HashMap<String,Object>> Select70HashMapList(@Param("sql") String sql);
 
     /**
      * 70库插入SQL

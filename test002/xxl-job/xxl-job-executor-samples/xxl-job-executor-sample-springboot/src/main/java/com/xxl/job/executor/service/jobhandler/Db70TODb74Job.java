@@ -40,7 +40,7 @@ public class Db70TODb74Job {
                 // 查70需要调度的数据
                 String selectSql =  " select * from "+tableName ;
 
-                List<HashMap<String, Object>> rs = primary70Mapper.SelectHashMapList(selectSql);
+                List<HashMap<String, Object>> rs = primary70Mapper.Select70HashMapList(selectSql);
 
                 if(rs == null || rs.size() <= 0){
                     returnT.setCode(FAIL_CODE);
@@ -68,10 +68,8 @@ public class Db70TODb74Job {
                                  + valueSql.toString().substring(0, valueSql.length() - 1) + " )";
 
 
-                    String sq = " SELECT * FROM " + tableName + " where "+ haveSql.toString().substring(0,haveSql.length() - 4);
-                    System.out.println("sq========"+sq);
                     // 判断是否已存在该数据
-                    List<HashMap<String,Object>> number = primary74Mapper.SelectHashMapList(" SELECT * FROM " + tableName
+                    List<HashMap<String,Object>> number = primary74Mapper.Select74HashMapList(" SELECT * FROM " + tableName
                             + " where "+ haveSql.toString().substring(0,haveSql.length() - 4));
 
                     if(number != null && number.size()>0 ){
