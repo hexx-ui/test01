@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static com.xxl.job.core.biz.model.ReturnT.FAIL_CODE;
 import static com.xxl.job.core.biz.model.ReturnT.SUCCESS_CODE;
@@ -38,9 +39,8 @@ public class Db70TODb74Job {
             try {
                 // 查70需要调度的数据
                 String selectSql =  " select * from "+tableName ;
-                System.out.println(selectSql);
 
-                List<HashMap<String, String>> rs = primary70Mapper.SelectHashMapList(selectSql);
+                List<HashMap<String, Object>> rs = primary70Mapper.SelectHashMapList(selectSql);
 
                 if(rs == null || rs.size() <= 0){
                     returnT.setCode(FAIL_CODE);
@@ -48,23 +48,37 @@ public class Db70TODb74Job {
                     return returnT;
                 }
 
-                // 组装成插入74的数据
-                StringBuffer sql = new StringBuffer();
-                StringBuffer valueSql = new StringBuffer();
+                for (HashMap<String, Object> hashMap : rs){
 
-                sql.append(" Insert into "+ tableName +"  (   ");
+                    // 组装成插入74的数据
+                    StringBuffer insertSql = new StringBuffer();
+                    StringBuffer valueSql = new StringBuffer();
+                    // 组装校验数据
+                    StringBuffer haveSql = new StringBuffer();
 
-                for (HashMap<String, String> hashMap : rs){
+                    insertSql.append(" Insert into "+ tableName +"  (   ");
+
                     //  KEY 即 表字段，value 即 字段值
                     for(String key : hashMap.keySet()){
-                        sql.append(key+", ");
-                        valueSql.append(" '"+hashMap.get(key)+ "',");
+                        insertSql.append(key+",");
+                        valueSql.append(getMapValue(hashMap.get(key))+",");
+                        haveSql.append(key +"="+  getMapValue(hashMap.get(key))+" and ");
                     }
-                    String rsSQL = sql.toString().substring(0, sql.length() - 1) + " ) values ( "
+                    String rsSQL = insertSql.toString().substring(0, insertSql.length() - 1) + " ) values ( "
                                  + valueSql.toString().substring(0, valueSql.length() - 1) + " )";
 
-                    System.out.println(rsSQL);
+
+                    String sq = " SELECT * FROM " + tableName + " where "+ haveSql.toString().substring(0,haveSql.length() - 4);
+                    System.out.println("sq========"+sq);
+                    // 判断是否已存在该数据
+                    List<HashMap<String,Object>> number = primary74Mapper.SelectHashMapList(" SELECT * FROM " + tableName
+                            + " where "+ haveSql.toString().substring(0,haveSql.length() - 4));
+
+                    if(number != null && number.size()>0 ){
+                        continue;
+                    }
                     // 插入数据库
+                    System.out.println(rsSQL);
                     primary74Mapper.inserTDB74(rsSQL);
                 }
 
@@ -76,13 +90,37 @@ public class Db70TODb74Job {
 
         }
         returnT.setCode(SUCCESS_CODE);
-        returnT.setMsg("数据ID一致性校验通过!");
+        returnT.setMsg("数据调度成功!");
         return returnT;
     }
+
+    private String getMapValue(Object o) {
+        if (o == null) {
+            return "''";
+        } else if (isNumber(o.toString())) {
+            return o.toString();
+        } else {
+            return " '"+o.toString()+"' ";
+        }
+    }
+    /**
+     * 判断一个字符串是否是数字。
+     *
+     * @param string
+     * @return
+     */
+    public  boolean isNumber(String string) {
+        if (string == null)
+            return false;
+        Pattern pattern = Pattern.compile("^-?\\d+(\\.\\d+)?$");
+        return pattern.matcher(string).matches();
+    }
+
 
     private String[] getTableName() {
         return new String[]{
                 "tb_area"
         };
     }
+
 }
