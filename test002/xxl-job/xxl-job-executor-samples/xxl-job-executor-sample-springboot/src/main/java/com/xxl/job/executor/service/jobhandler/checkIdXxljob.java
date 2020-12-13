@@ -5,7 +5,6 @@ import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.executor.dao.db70.Primary70Mapper;
 import com.xxl.job.executor.dao.db74.Primary74Mapper;
 import com.xxl.job.executor.vo.checkVo;
-import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -14,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.util.ArrayList;

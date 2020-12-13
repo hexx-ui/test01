@@ -1,11 +1,9 @@
 package com.xxl.job.executor.dao.db70;
 
 import com.xxl.job.executor.vo.checkVo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,7 +15,7 @@ import java.util.List;
 public interface Primary70Mapper {
 
     /**
-     * 校验主键一致性
+     * 70查询SQL
      * @param sql
      * @return
      */
@@ -25,4 +23,21 @@ public interface Primary70Mapper {
     @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = false,timeout = 10000)
     List<checkVo> checkdb70(@Param("sql") String sql);
 
+    /**
+     * 74数据查询
+     * @param sql
+     * @return
+     */
+    @Select("<script>${sql}</script>")
+    @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = false,timeout = 10000)
+    List<HashMap<String,String>> SelectHashMapList(@Param("sql") String sql);
+
+    /**
+     * 70库插入SQL
+     * @param sql
+     * @return
+     */
+    @Insert("<script>${sql}</script>")
+    @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = false,timeout = 10000)
+    Integer inserTDB70(@Param("sql") String sql);
 }
